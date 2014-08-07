@@ -45,5 +45,16 @@ $(".hn-fold").click(function() {
   $(nodes_to_toggle).each(function() {
     var comment = $(this).find("tr .comment");
     $(comment).toggle();
+
+    var fold_link = $(this).find(".hn-fold");
+    console.log("fold_link text: " + $(fold_link).text());
+
+    if ($(fold_link).text() === "[-]") {
+      console.log("MAKING PLUS");
+      $(fold_link).html("[+]");
+    } else {
+      console.log("MAKING MINUS");
+      $(fold_link).html("[-]");
+    }
   });
 });
