@@ -3,7 +3,7 @@
 
   "name": "HN Tree",
   "description": "Add functionality to 'fold' comments for Hacker News",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "permissions": [
     "activeTab"
   ],
