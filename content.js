@@ -19,6 +19,7 @@ $(".hn-fold").click(function() {
     var c_width = parseInt($("td:first img", $(this).find("table tr")).attr("width"));
     var c_vis = $(this).find("tr .comment").css("display") === "none";
 
+    // make sure it is a children and that it is the same state
     if (c_width > original_width) {
       if (c_vis === orig_vis) nodes_to_toggle.push($(this));
     } else return false;
@@ -31,10 +32,13 @@ $(".hn-fold").click(function() {
 
     // update the fold link
     var fold_link = $(this).find(".hn-fold");
-    if ($(fold_link).text() === "[-]")
+    if ($(fold_link).text() === "[-]") {
       $(fold_link).html("[+]");
-    else
+      $(this).find(".comhead").addClass("folded");
+    } else {
       $(fold_link).html("[-]"); 
+      $(this).find(".comhead").removeClass("folded");
+    }
 
     // hide any other extraneous sections in the comment
     $(comment).nextAll().toggle();
