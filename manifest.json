@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "HN Tree",
-  "description": "Add functionality to 'fold' comments for Hacker News",
-  "version": "0.1.2",
+  "description": "Yet another Hacker News comment collapsing extension.",
+  "version": "0.1.3",
   "permissions": [
     "activeTab"
   ],
@@ -12,11 +12,8 @@
   "content_scripts": [
     {
       "matches": [
-        // have to do it this way cause of: http://code.google.com/p/chromium/issues/detail?id=68561
         "http://news.ycombinator.com/*",
         "https://news.ycombinator.com/*"
-        // "http://news.ycombinator.com/item?*",
-        // "https://news.ycombinator.com/item?*"
       ],
       "css": ["hn-tree.css"],
       "js": ["jquery-2.1.1.min.js", "content.js"],
