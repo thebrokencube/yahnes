@@ -28,13 +28,13 @@ function fold_comments_one () {
     $(comment).toggle();
 
     // update the fold link
-    var fold_link = $(this).find(".hn-fold");
+    var fold_link = $(this).find(".hn-collapse");
     if ($(fold_link).text() === "[-]") {
       $(fold_link).html("[+]");
-      $(this).find(".comhead").addClass("folded");
+      $(this).find(".comhead").addClass("collapsed");
     } else {
       $(fold_link).html("[-]"); 
-      $(this).find(".comhead").removeClass("folded");
+      $(this).find(".comhead").removeClass("collapsed");
     }
 
     // hide any other extraneous sections in the comment
@@ -44,8 +44,8 @@ function fold_comments_one () {
 
 
 // add in the button things
-$("td.default span.comhead").prepend('<a class="hn-fold">[-]</a> ');
-$(".hn-fold").click(fold_comments_one);
+$("td.default span.comhead").prepend('<a class="hn-collapse">[-]</a> ');
+$(".hn-collapse").click(fold_comments_one);
 
 
 
@@ -65,13 +65,13 @@ $(".hn-fold").click(fold_comments_one);
 //   // fold clicked comment and update fold link
 //   var clicked_comment = $(clicked_tr).find("tr .comment");
 //   $(clicked_comment).toggle();
-//   var fold_link = $(clicked_tr).find(".hn-fold");
+//   var fold_link = $(clicked_tr).find(".hn-collapse");
 //   if ($(fold_link).text() === "[-]") {
 //     $(fold_link).html("[+]");
-//     $(clicked_tr).find(".comhead").addClass("folded");
+//     $(clicked_tr).find(".comhead").addClass("collapsed");
 //   } else {
 //     $(fold_link).html("[-]");
-//     $(clicked_tr).find(".comhead").removeClass("folded");
+//     $(clicked_tr).find(".comhead").removeClass("collapsed");
 //   }
 
 //   // toggle all children nodes
