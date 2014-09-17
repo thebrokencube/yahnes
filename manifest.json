@@ -13,8 +13,8 @@
   "content_scripts": [
     {
       "matches": [
-        "http://news.ycombinator.com/*",
-        "https://news.ycombinator.com/*"
+        "http://news.ycombinator.com/item?id=*",
+        "https://news.ycombinator.com/item?id=*"
       ],
       "css": ["yahnes.css"],
       "js": ["jquery-2.1.1.min.js", "content.js"],

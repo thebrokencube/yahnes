@@ -53,53 +53,69 @@ function toggle_node (node) {
   }
 }
 
-function full_toggle_node (node) {
-  $(node).toggle();
-
+function show_node (node) {
+  var comment = $(node.find("tr .comment"));
   var comhead = $(node.find(".comhead"));
+  var fold_link = $(node.find(".yahnes-collapse-link"));
 
-  if (comhead.hasClass("yahnes-collapsed")) {
-    comhead.removeClass("yahnes-collapsed");
-  } else {
-    comhead.addClass("yahnes-collapsed");
-  }
+  $(node).show();
+  comment.show();
+  comment.nextAll().show();
+  comhead.removeClass("yahnes-collapsed");
+  fold_link.html("[-]");
+  $(".yahnes-text", comhead).remove();
+}
 
+function hide_node (node) {
+  var comment = $(node.find("tr .comment"));
+  var comhead = $(node.find(".comhead"));
+  var fold_link = $(node.find(".yahnes-collapse-link"));
+
+  comment.hide();
+  comment.nextAll().hide();
+  comhead.addClass("yahnes-collapsed");
+  $(node).hide();
+  fold_link.html("[+]");
 }
 
 function multi_collapse () {
   // clicked comment info
   var clicked_link = $(this);
   var clicked_width = parseInt($("td:first img", clicked_link.closest("tr")).attr("width"));
-  var clicked_visibility = clicked_link.closest(".default").find(".comment").css("display") === "none";
 
   // get clicked element and all other possible elements that may need changing
   var clicked_tr = $(clicked_link.closest("table").closest("tr"));
   var possible_nodes = $(" ~ tr", clicked_tr).toArray();
 
-  // toggle 
+  var clicked_comhead = clicked_tr.find(".comhead");
+  var num_children = 0;
+
+  // toggle clicked node
+  toggle_node(clicked_tr);
+
+
+  // show or collapse all child nodes, depending on clicked node's new state 
   $(possible_nodes).each(function() {
     // current node info
     var node = $(this);
     var node_width = parseInt($("td:first img", node.find("table tr")).attr("width"));
-    var node_visiblity = node.css("display") === "none";
-    var num_children = 0;
 
-    // make sure node is a child node, otherwise break out
+    var clicked_is_collapsed = $(clicked_tr.find(".comhead")).hasClass("yahnes-collapsed");
+    var node_already_collapsed = $(node.find(".comhead")).hasClass("yahnes-collapsed");
+
     if (node_width > clicked_width) {
-      if (node_visiblity === clicked_visibility) {
-        full_toggle_node(node);
-        num_children++;
-      }
+      if (!clicked_is_collapsed) show_node(node);
+      else                       hide_node(node);
+
+      num_children++;
     } else return false;
   });
 
-  toggle_node(clicked_tr);
-  // var comhead = $(clicked_tr.find(".comhead"));
-  // if(comhead.hasClass("yahnes-collapsed")) {
-  //   comhead.append(' <span class="yahnes-text">(' + parseInt(num_children) + ' children)</em>');
-  // } else {
-
-  // }
+  if(clicked_comhead.hasClass("yahnes-collapsed")) {
+    clicked_comhead.append(' <span class="yahnes-text">(' + num_children + ' children)</span>');
+  } else {
+    $(".yahnes-text", clicked_comhead).remove();
+  }
 }
 
 
