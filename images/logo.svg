@@ -14,7 +14,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="New document 1">
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="/home/thebrokencube/code/yahnes/images/logo19.png"
+   inkscape:export-xdpi="5.1001959"
+   inkscape:export-ydpi="5.1001959">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -24,16 +27,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="325"
-     inkscape:cy="520"
+     inkscape:zoom="0.24748737"
+     inkscape:cx="197.43661"
+     inkscape:cy="759.57947"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
-     showgrid="false"
+     inkscape:current-layer="layer3"
+     showgrid="true"
      inkscape:window-width="754"
      inkscape:window-height="610"
-     inkscape:window-x="704"
-     inkscape:window-y="49"
+     inkscape:window-x="2105"
+     inkscape:window-y="80"
      inkscape:window-maximized="0">
     <inkscape:grid
        type="xygrid"
@@ -47,14 +50,15 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     style="display:none">
     <rect
        id="rect2985"
        width="437.14285"
@@ -75,5 +79,41 @@
          x="88.229935"
          y="363.3212"
          style="font-size:344.25170898px">[-]</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer#1"
+     style="display:inline">
+    <rect
+       y="49.527283"
+       x="37.165108"
+       height="334.24121"
+       width="334.24121"
+       id="rect3761"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.04450380999999992px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer">
+    <rect
+       style="fill:#ff6600;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="rect2987"
+       width="320"
+       height="320"
+       x="44.285713"
+       y="56.647888" />
+    <text
+       xml:space="preserve"
+       style="font-size:260px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Droid Sans Bold"
+       x="76.19001"
+       y="288.88422"
+       id="text3757"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3759"
+         x="76.19001"
+         y="288.88422">[-]</tspan></text>
   </g>
 </svg>

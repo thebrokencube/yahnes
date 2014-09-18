@@ -1,14 +1,3 @@
-// function ClickedLink (node) {
-//   this.node = $(node);
-//   this.width = parseInt($("td:first img", this.node.closest("tr")).attr("width"));
-//   this.visibility = this.node.closest(".default").find(".comment").css("display") === "none";
-// }
-
-// function collapse () {
-//   var clicked = new ClickedLink(this);
-//   var clicked_tr = clicked.node.closest("table").closest("tr");
-// }
-
 function single_collapse () {
   // clicked comment info
   var clicked_link = $(this);
@@ -118,7 +107,17 @@ function multi_collapse () {
   }
 }
 
+function init_extension() {
+  $("td.default span.comhead").prepend('<a class="yahnes-collapse-link">[-]</a> ');
 
-$("td.default span.comhead").prepend('<a class="yahnes-collapse-link">[-]</a> ');
-// $(".yahnes-collapse-link").click(single_collapse);
-$(".yahnes-collapse-link").click(multi_collapse);
+  chrome.storage.sync.get({
+    'collapse': 'single'
+  }, function(items) {
+    if (items.collapse === 'single')
+      $(".yahnes-collapse-link").click(single_collapse);
+    else
+      $(".yahnes-collapse-link").click(multi_collapse);
+  });
+}
+
+init_extension();
