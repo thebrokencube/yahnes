@@ -22,7 +22,11 @@
         "https://news.ycombinator.com/item?id=*"
       ],
       "css": ["./css/yahnes.css"],
-      "js": ["./js/lib/jquery-2.1.1.min.js", "./js/nodeutils.js", "./js/yahnes.js"],
+      "js": [
+        "./js/lib/jquery-2.1.1.min.js",
+        "./js/nodeutils.js",
+        "./js/yahnes.js"
+      ],
       "run_at": "document_end"
     }
   ]

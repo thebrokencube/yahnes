@@ -1,4 +1,5 @@
 var NodeUtils = (function($) {
+  /* Node class */
   function Node(tr) {
     this.tr = tr;
     this.width = parseInt( $("td:first img", tr).attr("width") );
@@ -9,11 +10,13 @@ var NodeUtils = (function($) {
     this.collapsed = $(tr.find(".comhead")).hasClass("yahnes-collapsed");
   }
 
+  /* Node class: update elements that can change after a collapse */
   Node.prototype.update = function() {
     this.vis = this.tr.find(".comment").css("display") !== "none";
     this.collapsed = $(this.tr.find(".comhead")).hasClass("yahnes-collapsed");
   };
 
+  /* return a Node object */
   var getNode = function(tr) {
     return new Node(tr);
   };
@@ -24,6 +27,7 @@ var NodeUtils = (function($) {
       return getNode( $(link).closest("table").closest("tr") );
     },
 
+    /* return an array of all possible nodes in Node form, including the clicked node */
     getPossibleNodes: function(clickedNode) {
       var possibleNodes = $(" ~ tr", $(clickedNode.tr)).toArray().map(
         function(tr) { return getNode( $(tr) ); }
@@ -70,4 +74,3 @@ var NodeUtils = (function($) {
     }
   };
 })(jQuery);
-

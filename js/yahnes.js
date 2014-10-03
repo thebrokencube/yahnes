@@ -21,6 +21,7 @@ var YAHNESModule = (function($, NodeUtils) {
 
     $(possibleNodes).each(function(nodeIdx, node) {
       if (nodeIdx === 0) {
+        // if the clicked node, go ahead and toggle it and update it.
         NodeUtils.toggle(node);
         clickedNode.update();
       } else {
@@ -35,6 +36,7 @@ var YAHNESModule = (function($, NodeUtils) {
       }
     });
 
+    // add the number of children the clicked node has
     if(clickedNode.collapsed) {
       clickedNode.comhead.append(' <span class="yahnes-text">(' + numChildren + ' children)</span>');
     } else {
@@ -44,10 +46,10 @@ var YAHNESModule = (function($, NodeUtils) {
 
 
   return {
+    /* initialize the collapse links and set up the correct click handlers depending on options */
     init: function() {
       $("td.default span.comhead").prepend('<a class="yahnes-collapse-link">[-]</a> ');
 
-      // set the correct click handler depending on the settings
       chrome.storage.sync.get({
         'collapse': 'single' // default to single
       }, function(items) {
@@ -60,4 +62,5 @@ var YAHNESModule = (function($, NodeUtils) {
   };
 })(jQuery, NodeUtils);
 
+// start up the extension
 YAHNESModule.init();
