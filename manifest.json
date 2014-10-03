@@ -2,8 +2,9 @@
   "manifest_version": 2,
 
   "name": "Yet Another Hacker News Extension Suite",
-  "description": "YAHNES: Yet Another Hacker News Extension Suite.",
-  "version": "0.1.5",
+  "short_name": "YAHNES",
+  "description": "YAHNES: Non-obtrusive enhancements for browsing Hacker News",
+  "version": "0.1.6",
   "icons": {
     "19": "./images/logo19.png",
     "38": "./images/logo38.png",
@@ -13,11 +14,6 @@
     "activeTab",
     "storage"
   ],
-  "background": {
-    "scripts": [
-      "background.js"
-    ]
-  },
   "options_page": "options.html",
   "content_scripts": [
     {
@@ -25,8 +21,8 @@
         "http://news.ycombinator.com/item?id=*",
         "https://news.ycombinator.com/item?id=*"
       ],
-      "css": ["yahnes.css"],
-      "js": ["jquery-2.1.1.min.js", "content.js"],
+      "css": ["./css/yahnes.css"],
+      "js": ["./js/lib/jquery-2.1.1.min.js", "./js/nodeutils.js", "./js/yahnes.js"],
       "run_at": "document_end"
     }
   ]
