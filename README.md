@@ -8,9 +8,9 @@ You can download the extension from [the Chrome Web Store](https://chrome.google
 
 Change Log
 ----------
-0.1.6 - Refactored code into modules.
-0.1.5 - Single Collapse and Multi Collapse options both available. Added a primitive options page to switch between them.
-0.1.1-0.1.4 - Mostly Single Collapse and experimentation leading up to 0.1.5.
+* 0.1.6 - Refactored code into modules.
+* 0.1.5 - Single Collapse and Multi Collapse options both available. Added a primitive options page to switch between them.
+* 0.1.1-0.1.4 - Mostly Single Collapse and experimentation leading up to 0.1.5.
 
 License
 -------
