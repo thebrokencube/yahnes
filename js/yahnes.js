@@ -3,52 +3,26 @@ var YAHNESModule = (function($, NodeUtils) {
   var parseLevel = function(classAttr){
     return parseInt(classAttr.split('-')[1]);
   };
-  //Given a $parent, will collapse all following nodes with a lower level(higher int-val)
-  var collapse = function($parent){
+
+  //Will expand/collapse based on the value of toggle, t = expand, f = collapse
+  var toggleCollapse = function($parent, toggle){
     var curLevel, level, $nextRow, $br;
 
     level = parseLevel($parent.attr('class'));
     $nextRow = $parent.next();
     curLevel = parseLevel($nextRow.attr('class'));
 
-    $parent.find('br').nextAll().hide();
-
-    $parent.find('.expand').show();
-    $parent.find('.collapse').hide();
-
-    //Looping through the TR's until we return to our starting level
-    while(curLevel > level){
-      $nextRow.find('.expand').show();
-      $nextRow.find('.collapse').hide();
-
-      $br = $nextRow.find('br');
-      $br.nextAll().hide();
-      //Priming the loop
-      $nextRow = $nextRow.next();
-      curLevel = parseLevel($nextRow.attr('class'));
-    }
-
-    console.log('level: %i, curLevel: %i', level, curLevel);
-  };
-
-  var expand = function($parent){
-    var curLevel, level, $nextRow, $br;
-
-    level = parseLevel($parent.attr('class'));
-    $nextRow = $parent.next();
-    curLevel = parseLevel($nextRow.attr('class'));
-
-    $parent.find('br').nextAll().show();
-    $parent.find('.expand').hide();
-    $parent.find('.collapse').show();
+    $parent.find('br').nextAll().toggle(toggle);
+    $parent.find('.expand').toggle(!toggle);
+    $parent.find('.collapse').toggle(toggle);
 
     //Looping through the TR's until we return to our starting level
     while(curLevel > level){
-      $nextRow.find('.expand').hide();
-      $nextRow.find('.collapse').show();
+      $nextRow.find('.expand').toggle(!toggle);
+      $nextRow.find('.collapse').toggle(toggle);
 
       $br = $nextRow.find('br');
-      $br.nextAll().show();
+      $br.nextAll().toggle(toggle);
       //Priming the loop
       $nextRow = $nextRow.next();
       curLevel = parseLevel($nextRow.attr('class'));
@@ -59,7 +33,7 @@ var YAHNESModule = (function($, NodeUtils) {
     /* initialize the collapse links and set up the correct click handlers depending on options */
     init: function() {
       var $comment, $container, $comheads, i, l, $current, currentLevel, $link;
-
+      //Retrieving needed elements
       $comments = $('table table table');//This selects just the comments' tables
       $container = $comments.eq(0).parents('table').eq(0);
       $comHeads = $container.find('.comhead');
@@ -77,19 +51,13 @@ var YAHNESModule = (function($, NodeUtils) {
       }
       //Definiing a click handler for any expand-collapse in the comments' table
       $container.on('click', '.expand-collapse', null, function(e){
-        var $target, $parent, $expand, $collapse;
+        var $target, $parent,$expand;
         $target =$(e.target).closest('.expand-collapse');
         $parent = $target.parents('tr').eq(1);//This represents the TR that is a sibling to all comments
-        $collapse = $target.find('.collapse');
+        $expand = $target.find('.expand');
 
-        if($collapse.is(':visible')){
-          //Collapsing child comments
-          collapse($parent);
-        }
-        else{
-          //Expanding child comments
-          expand($parent);
-        }
+        toggleCollapse($parent, $expand.is(':visible'));
+        //disabling anchor
         e.preventDefault();
         return false;
       });
