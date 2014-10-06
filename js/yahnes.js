@@ -17,7 +17,7 @@ var YAHNESModule = (function($, NodeUtils) {
     $parent.find('.collapse').hide();
 
     //Looping through the TR's until we return to our starting level
-    while(curLevel > level || !isNaN(curLevel)){
+    while(curLevel > level){
       $nextRow.find('.expand').show();
       $nextRow.find('.collapse').hide();
 
@@ -43,7 +43,7 @@ var YAHNESModule = (function($, NodeUtils) {
     $parent.find('.collapse').show();
 
     //Looping through the TR's until we return to our starting level
-    while(curLevel > level || !isNaN(curLevel)){
+    while(curLevel > level){
       $nextRow.find('.expand').hide();
       $nextRow.find('.collapse').show();
 
