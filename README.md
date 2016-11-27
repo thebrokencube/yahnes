@@ -1,3 +1,5 @@
+[DEPRECATED] Since HN added native comment collapsing, I've stopped working on it. I also stopped working on it cause I forgot I wrote this.
+
 YAHNES: Yet Another Hacker News Extension Suite
 ===============================================
 YAHNES is a Chrome extension that provides non-obtrusive enhancements for browsing Hacker News.
